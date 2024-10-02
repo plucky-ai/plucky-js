@@ -1,0 +1,19 @@
+{
+  "name": "plucky-node",
+  "version": "0.0.1-alpha.1",
+  "description": "The official Typescript library for the Plucky API",
+  "main": "dist/index.js",
+  "repository": "git@github.com:plucky-ai/sdk.git",
+  "author": "Plucky <support@plucky.ai>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "tsx": "^4.19.1",
+    "vitest": "^2.1.1"
+  }
+}
