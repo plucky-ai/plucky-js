@@ -16,7 +16,7 @@ yarn add plucky-js
 import { Plucky } from 'plucky-js';
 
 const plucky = new Plucky({
-  apiKey: 'your-api'
+  apiKey: 'your-api-key'
 })
 plucky.capture({
   type: "case",
