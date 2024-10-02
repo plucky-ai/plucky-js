@@ -1,5 +1,4 @@
 import { defineConfig } from "vitest/config";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   resolve: {
@@ -7,6 +6,5 @@ export default defineConfig({
       "plucky-js": "./src/index.ts",
     },
   },
-  plugins: [tsconfigPaths()],
   test: {},
 });

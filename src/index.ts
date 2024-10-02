@@ -23,17 +23,6 @@ export class Plucky {
     this._captureQueue = [];
     this._timer = null;
   }
-  track(eventName: string, details: string, caseExternalId: string) {
-    this.capture({
-      type: "event",
-      event: {
-        name: eventName,
-        type: "track",
-        details,
-        caseExternalId,
-      },
-    });
-  }
   capture(captureObj: CaptureObject) {
     this._captureQueue.push(captureObj);
     this._debouncedSend();
