@@ -29,8 +29,8 @@ plucky.capture({
 plucky.capture({
   type: "event",
   event: {
-    name: "user message",
-    details: "user message details",
+    name: "user sent a message",
+    details: "Hello there!",
     caseExternalId: "123456",
   }
 })
