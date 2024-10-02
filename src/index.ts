@@ -1,5 +1,5 @@
 import { CaptureObject } from "./types";
-
+import { getEnv } from "./utils";
 export interface ClientOptions {
   apiKey?: string | null;
   baseUrl?: string | null;
@@ -99,6 +99,4 @@ export class Plucky {
   }
 }
 
-function getEnv(key: string) {
-  return process.env[key];
-}
+export { CaptureObject };

@@ -1,6 +1,5 @@
-import { Plucky } from "../src";
+import { Plucky, CaptureObject } from "../src";
 import { afterEach, beforeAll, describe, expect, test, vi } from "vitest";
-import { CaptureObject } from "../src/types";
 
 const TEST_API_KEY = "abcdef";
 const TEST_BASE_URL = "http://localhost:3700";

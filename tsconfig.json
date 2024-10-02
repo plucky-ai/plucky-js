@@ -1,11 +1,23 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs",
+    "module": "ES6",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "types": ["node"]
-  }
+    "types": ["node"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "declaration": true,
+    "declarationMap": true,
+    "paths": {
+      "plucky-js/*": ["./src/*"],
+      "plucky-js": ["./src/index.ts"]
+    },
+    "moduleResolution": "node"
+  },
+  "include": ["src/**/*", "test/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
