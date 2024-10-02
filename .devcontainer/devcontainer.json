@@ -1,5 +1,5 @@
 {
-  "name": "Plucky Node",
+  "name": "Plucky Javascript SDK",
   "dockerComposeFile": "docker-compose.yml",
   "service": "workspace",
   "workspaceFolder": "/workspace",

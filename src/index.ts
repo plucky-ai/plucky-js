@@ -1,5 +1,5 @@
 import { CaptureObject } from "./types";
-
+import { getEnv } from "./utils";
 export interface ClientOptions {
   apiKey?: string | null;
   baseUrl?: string | null;
@@ -22,17 +22,6 @@ export class Plucky {
     };
     this._captureQueue = [];
     this._timer = null;
-  }
-  track(eventName: string, details: string, caseExternalId: string) {
-    this.capture({
-      type: "event",
-      event: {
-        name: eventName,
-        type: "track",
-        details,
-        caseExternalId,
-      },
-    });
   }
   capture(captureObj: CaptureObject) {
     this._captureQueue.push(captureObj);
@@ -64,13 +53,15 @@ export class Plucky {
         try {
           console.error(await err.json());
         } catch (_) {
-          console.log(await err.text());
+          console.error(await err.text());
         }
+      } else {
+        console.error(err);
       }
-      console.error(err);
       if (this._attempts > 2) {
         this._attempts = 0;
-        throw err;
+        console.error("Could not send data to the Plucky API.");
+        return;
       }
 
       this._debouncedSend();
@@ -99,6 +90,4 @@ export class Plucky {
   }
 }
 
-function getEnv(key: string) {
-  return process.env[key];
-}
+export { CaptureObject };

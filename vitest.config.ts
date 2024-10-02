@@ -1,7 +1,10 @@
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  test: {
-    // ...
+  resolve: {
+    alias: {
+      "plucky-js": "./src/index.ts",
+    },
   },
+  test: {},
 });
