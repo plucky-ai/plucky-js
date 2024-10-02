@@ -3,9 +3,35 @@
 ## Installation
 
 ```sh
-npm install @plucky-ai/sdk
+npm install plucky-js
 ```
 
 ```sh
-yarn add @plucky-ai/sdk
+yarn add plucky-js
+```
+
+## Usage
+
+```
+import { Plucky } from 'plucky-js';
+
+const plucky = new Plucky({
+  apiKey: 'your-api'
+})
+plucky.capture({
+  type: "case",
+  case: {
+    name: "John Doe - chat 0",
+    type: "chat",
+    externalId: "123456",
+  }
+})
+plucky.capture({
+  type: "event",
+  event: {
+    name: "user message",
+    details: "user message details",
+    caseExternalId: "123456",
+  }
+})
 ```
