@@ -64,13 +64,15 @@ export class Plucky {
         try {
           console.error(await err.json());
         } catch (_) {
-          console.log(await err.text());
+          console.error(await err.text());
         }
+      } else {
+        console.error(err);
       }
-      console.error(err);
       if (this._attempts > 2) {
         this._attempts = 0;
-        throw err;
+        console.error("Could not send data to the Plucky API.");
+        return;
       }
 
       this._debouncedSend();
