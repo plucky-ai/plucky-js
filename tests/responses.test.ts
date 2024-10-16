@@ -1,3 +1,4 @@
+import { it } from "node:test";
 import { Plucky, CaptureObject } from "../src";
 import { afterEach, beforeAll, describe, expect, test, vi } from "vitest";
 
@@ -7,6 +8,10 @@ const TEST_BASE_URL = "http://localhost:3700";
 const client = new Plucky({
   apiKey: TEST_API_KEY,
   baseUrl: TEST_BASE_URL,
+  evaluate: async (row) => {
+    if (row.inputs.a + row.inputs.b === row.outputs.c) return "";
+    throw new Error("Invalid output");
+  },
 });
 
 client["_debouncedSend"] = vi.fn();
@@ -58,5 +63,27 @@ describe("capture", () => {
         method: "POST",
       })
     );
+  });
+});
+
+describe("evaluate", () => {
+  test("calls the evaluate function", async () => {
+    const report = await client.evaluate([
+      {
+        name: "test",
+        rows: [
+          {
+            inputs: {
+              a: 1,
+              b: 2,
+            },
+            outputs: {
+              c: 3,
+            },
+          },
+        ],
+      },
+    ]);
+    expect(report.datasets.length).toBe(1);
   });
 });
