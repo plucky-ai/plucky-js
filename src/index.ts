@@ -3,6 +3,7 @@ import { getEnv } from "./utils";
 import { Readable } from "stream";
 
 export type Dataset = {
+  id: string;
   name: string;
   rows: Row[];
 };
@@ -47,6 +48,7 @@ export interface ClientOptions {
   apiKey?: string | null;
   baseUrl?: string | null;
   evaluate?: EvaluationFunction;
+  datasetDir?: string;
 }
 
 const defaultBaseUrl = "https://api.plucky.ai";
@@ -57,10 +59,12 @@ export class Plucky {
   private _timer: NodeJS.Timeout | null;
   private _attempts: number = 0;
   private _evaluate: EvaluationFunction | null;
+  private _datasetDir: string | null;
   constructor({
     apiKey = getEnv("PLUCKY_API_KEY") || "",
     baseUrl = defaultBaseUrl,
     evaluate,
+    datasetDir,
   }: ClientOptions = {}) {
     this._options = {
       apiKey,
@@ -69,6 +73,7 @@ export class Plucky {
     this._captureQueue = [];
     this._timer = null;
     this._evaluate = evaluate || null;
+    this._datasetDir = datasetDir || null;
   }
   capture(captureObj: CaptureObject) {
     this._captureQueue.push(captureObj);
@@ -156,6 +161,27 @@ export class Plucky {
       }),
     };
     return report;
+  }
+  async evaluateDatasetById(id: string): Promise<DatasetEvaluation> {
+    if (!this._evaluate) throw new Error("Evaluation function not provided.");
+    return {
+      name: "",
+      passes: 0,
+      fails: 0,
+      rows: [],
+    };
+  }
+  async evaluateRowById(id: string): Promise<RowEvaluation> {
+    if (!this._evaluate) throw new Error("Evaluation function not provided.");
+    return {
+      row: {
+        inputs: {},
+        outputs: {},
+      },
+      passes: 0,
+      fails: 0,
+      runs: [],
+    };
   }
 }
 
