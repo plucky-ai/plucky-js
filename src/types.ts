@@ -54,11 +54,8 @@ export interface Evaluation {
 export interface TestRun {
   startTime: Date;
   endTime: Date;
-  inputs: any;
-  outputs: any;
   score: boolean;
   maxScore: number;
-  error?: string;
 }
 
 export interface TestResults {

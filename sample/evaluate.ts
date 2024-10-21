@@ -1,5 +1,12 @@
 import { evaluate } from "../src";
 
 evaluate(async (row) => {
-  return 1;
+  return {
+    tests: [
+      {
+        name: "Test 1",
+        row: row,
+      },
+    ],
+  };
 });
