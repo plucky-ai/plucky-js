@@ -33,3 +33,38 @@ interface EventCreateRequestBody {
   trace?: any;
   caseExternalId: string;
 }
+
+export interface PluckyTestConfig {
+  evaluate: {
+    datasetDir: string;
+  };
+}
+
+export interface Row {
+  id?: string;
+  inputs: { [key: string]: any };
+  outputs: { [key: string]: any };
+  [key: string]: any;
+}
+
+export interface Evaluation {
+  tests: TestResults[];
+}
+
+export interface TestRun {
+  startTime: Date;
+  endTime: Date;
+  inputs: any;
+  outputs: any;
+  score: boolean;
+  maxScore: number;
+  error?: string;
+}
+
+export interface TestResults {
+  name: string;
+  row: Row;
+  averageScore: number;
+  maxScore: number;
+  runs: TestRun[];
+}
