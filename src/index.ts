@@ -1,8 +1,8 @@
 import { CaptureObject, PluckyTestConfig } from "./types";
 import { Plucky } from "./Plucky";
-import { evaluate } from "./evaluate";
+import { Evaluator } from "./Evaluator";
 
-export { CaptureObject, Plucky, evaluate };
+export { CaptureObject, Plucky, Evaluator };
 
 export function defineConfig(options: PluckyTestConfig): PluckyTestConfig {
   return options;

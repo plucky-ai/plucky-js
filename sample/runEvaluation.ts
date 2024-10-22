@@ -1,5 +1,5 @@
 import { join } from "path";
-import { Evaluator } from "../src/evaluate";
+import { Evaluator } from "../src";
 import { RowEvaluationArgs } from "../src/types";
 
 async function evaluateRow({ row }: RowEvaluationArgs) {
