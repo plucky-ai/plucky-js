@@ -1,15 +1,19 @@
-import { Evaluation, Row } from "./types";
-
-const dataset = {
-  rows: [],
-};
+import { Evaluation, EvaluationResponse, Row } from "./types";
 
 export async function evaluate(
-  fn: (data: { row: Row }) => Promise<Evaluation> | Evaluation
+  fn: (data: { row: Row }) => Promise<EvaluationResponse> | EvaluationResponse
 ): Promise<Evaluation> {
   const testRow = {
     inputs: {},
     outputs: {},
   };
-  return fn({ row: testRow });
+  const evaluationResponse = await fn({ row: testRow });
+  return {
+    row: testRow,
+    ...evaluationResponse,
+  };
+}
+
+export class TestResult {
+  constructor(public name: string, public score: boolean) {}
 }

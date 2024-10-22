@@ -1,11 +1,12 @@
 import { evaluate } from "../src";
 
-evaluate(async (row) => {
+evaluate(async ({ row }) => {
   return {
     tests: [
       {
         name: "Test 1",
-        row: row,
+        score: 0,
+        runs: [],
       },
     ],
   };

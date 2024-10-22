@@ -48,20 +48,22 @@ export interface Row {
 }
 
 export interface Evaluation {
+  row: Row;
+  tests: TestResults[];
+}
+
+export interface EvaluationResponse {
   tests: TestResults[];
 }
 
 export interface TestRun {
-  startTime: Date;
-  endTime: Date;
-  score: boolean;
-  maxScore: number;
+  score: number;
+  outputs: { [key: string]: any };
+  trace?: any;
 }
 
 export interface TestResults {
   name: string;
-  row: Row;
-  averageScore: number;
-  maxScore: number;
+  score: number;
   runs: TestRun[];
 }
