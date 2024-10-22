@@ -13,7 +13,14 @@
     "dist"
   ],
   "dependencies": {
-    "typescript": "^5.6.2"
+    "@types/yaml": "^1.9.7",
+    "arg": "^5.0.2",
+    "remove": "^0.1.5",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2",
+    "yaml": "^2.6.0",
+    "yarn": "^1.22.22"
   },
   "scripts": {
     "test": "vitest",
@@ -25,7 +32,9 @@
   "devDependencies": {
     "@types/node": "^22.7.4",
     "tsc": "^2.0.4",
-    "tsx": "^4.19.1",
     "vitest": "^2.1.1"
+  },
+  "bin": {
+    "plucky": "./dist/cjs/cli.js"
   }
 }

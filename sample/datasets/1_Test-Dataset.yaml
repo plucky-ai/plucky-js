@@ -1,0 +1,17 @@
+id: 1
+name: Test Dataset
+rows:
+  - id: 6972b434-9b45-4025-a90f-431c4a041b88
+    inputs:
+      hello: world
+    outputs:
+      assessments:
+        - Must say hi
+        - Cannot say bye
+  - id: 6972b434-9b45-4025-a90f-431c4a041b88
+    inputs:
+      goodbye: world
+    outputs:
+      assessments:
+        - Must say bye
+        - Cannot say hi

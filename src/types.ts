@@ -40,6 +40,13 @@ export interface PluckyTestConfig {
   };
 }
 
+export interface Dataset {
+  id: string;
+  name: string;
+  rows: Row[];
+  [key: string]: any;
+}
+
 export interface Row {
   id?: string;
   inputs: { [key: string]: any };
@@ -47,14 +54,33 @@ export interface Row {
   [key: string]: any;
 }
 
-export interface Evaluation {
-  row: Row;
-  tests: TestResults[];
+export interface EvaluationResult {
+  datasets: DatasetEvaluationResult[];
+  score: number;
+  testCount: number;
 }
 
-export interface EvaluationResponse {
-  tests: TestResults[];
+export interface DatasetEvaluationResult {
+  id: string;
+  name: string;
+  score: number;
+  testCount: number;
+  rows: RowEvaluationResult[];
 }
+
+export interface RowEvaluationResult extends RowEvaluationResponse {
+  row: Row;
+  score: number;
+  tests: TestResult[];
+}
+
+export interface RowEvaluationArgs {
+  row: Row;
+}
+
+export type EvaluationFunction = (data: {
+  row: Row;
+}) => Promise<RowEvaluationResponse> | RowEvaluationResponse;
 
 export interface TestRun {
   score: number;
@@ -62,8 +88,15 @@ export interface TestRun {
   trace?: any;
 }
 
-export interface TestResults {
-  name: string;
+export interface TestResult extends TestResultResponse {
   score: number;
+}
+
+export interface RowEvaluationResponse {
+  tests: TestResultResponse[];
+}
+
+export interface TestResultResponse {
+  name: string;
   runs: TestRun[];
 }
