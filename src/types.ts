@@ -34,12 +34,6 @@ interface EventCreateRequestBody {
   caseExternalId: string;
 }
 
-export interface PluckyTestConfig {
-  evaluate: {
-    datasetDir: string;
-  };
-}
-
 export interface Dataset {
   id: string;
   name: string;
