@@ -13,17 +13,19 @@ import { average, sum } from "./utils";
 
 export class Evaluator {
   evaluateRowFn: EvaluationFunction;
-  constructor({ evaluateRow }: { evaluateRow: EvaluationFunction }) {
-    this.evaluateRowFn = evaluateRow;
-  }
-  async run(options: {
+  datasetDir?: string;
+  constructor({
+    evaluateRow,
+    datasetDir,
+  }: {
+    evaluateRow: EvaluationFunction;
     datasetDir?: string;
-    datasets?: Dataset[];
-  }): Promise<EvaluationResult> {
-    const datasets = await resolveDatasets(
-      options.datasets,
-      options.datasetDir
-    );
+  }) {
+    this.evaluateRowFn = evaluateRow;
+    this.datasetDir = datasetDir;
+  }
+  async run(options: { datasets?: Dataset[] }): Promise<EvaluationResult> {
+    const datasets = await resolveDatasets(options.datasets, this.datasetDir);
     const datasetResults = await Promise.all(
       datasets.map(this.evaluateDataset.bind(this))
     );

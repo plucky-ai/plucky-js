@@ -1,6 +1,6 @@
 {
   "name": "plucky-js",
-  "version": "0.0.1-alpha.6",
+  "version": "0.0.1-alpha.7",
   "description": "The official Typescript library for the Plucky API",
   "repository": "git@github.com:plucky-ai/plucky-js.git",
   "author": "Plucky <support@plucky.ai>",
@@ -13,7 +13,6 @@
     "dist"
   ],
   "dependencies": {
-    "@types/yaml": "^1.9.7",
     "arg": "^5.0.2",
     "remove": "^0.1.5",
     "ts-node": "^10.9.2",
