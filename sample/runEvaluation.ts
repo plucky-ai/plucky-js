@@ -39,10 +39,9 @@ async function evaluateRow({ row }: RowEvaluationArgs) {
 async function main() {
   const evaluator = new Evaluator({
     evaluateRow,
-  });
-  return evaluator.run({
     datasetDir: join(__dirname, "/datasets"),
   });
+  return evaluator.run();
 }
 
 main()

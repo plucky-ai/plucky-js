@@ -24,7 +24,8 @@ export class Evaluator {
     this.evaluateRowFn = evaluateRow;
     this.datasetDir = datasetDir;
   }
-  async run(options: { datasets?: Dataset[] }): Promise<EvaluationResult> {
+  async run(options?: { datasets?: Dataset[] }): Promise<EvaluationResult> {
+    options = options || {};
     const datasets = await resolveDatasets(options.datasets, this.datasetDir);
     const datasetResults = await Promise.all(
       datasets.map(this.evaluateDataset.bind(this))

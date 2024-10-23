@@ -75,9 +75,16 @@ export type EvaluationFunction = (data: {
   row: Row;
 }) => Promise<RowEvaluationResponse> | RowEvaluationResponse;
 
-export interface TestRun {
+export interface TestRun extends TestRunResponse {
   score: number;
-  outputs: { [key: string]: any };
+  metadata: { [key: string]: any };
+  log: string;
+}
+
+export interface TestRunResponse {
+  score: number;
+  metadata?: { [key: string]: any };
+  log?: string;
   trace?: any;
 }
 
@@ -91,5 +98,5 @@ export interface RowEvaluationResponse {
 
 export interface TestResultResponse {
   name: string;
-  runs: TestRun[];
+  runs: TestRunResponse[];
 }
