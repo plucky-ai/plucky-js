@@ -1,0 +1,17 @@
+id: 1
+name: Test Dataset
+rows:
+  - id: 6972b434-9b45-4025-a90f-431c4a041b88
+    inputs:
+      content: hello world
+    outputs:
+      contains:
+        - hello
+        - world
+  - id: 6972b434-9b45-4025-a90f-431c4a041b88
+    inputs:
+      content: goodnight moon
+    outputs:
+      doesNotContain:
+        - hello
+        - world
