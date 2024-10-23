@@ -3,15 +3,15 @@ name: Test Dataset
 rows:
   - id: 6972b434-9b45-4025-a90f-431c4a041b88
     inputs:
-      hello: world
+      content: hello world
     outputs:
-      assessments:
-        - Must say hi
-        - Cannot say bye
+      contains:
+        - hello
+        - world
   - id: 6972b434-9b45-4025-a90f-431c4a041b88
     inputs:
-      goodbye: world
+      content: goodnight moon
     outputs:
-      assessments:
-        - Must say bye
-        - Cannot say hi
+      doesNotContain:
+        - hello
+        - world

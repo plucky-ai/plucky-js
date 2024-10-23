@@ -51,7 +51,6 @@ export interface Row {
   id?: string;
   inputs: { [key: string]: any };
   outputs: { [key: string]: any };
-  [key: string]: any;
 }
 
 export interface EvaluationResult {
